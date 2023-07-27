@@ -3,7 +3,7 @@ import pandas as pd
 from ShipAssignment import ModeloPlanificacionBarcos
 from pyomo.environ import ConcreteModel, Set, RangeSet, Var, Binary, Objective, minimize, Constraint, SolverFactory, TerminationCondition
 
-st.title('Aplicación de Planificación de Barcos')
+st.title('Aplicación de Planificación de Barcos Naviera')
 
 # 1. Datos de entrada
 st.subheader('Datos de entrada')
