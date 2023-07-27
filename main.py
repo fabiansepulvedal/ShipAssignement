@@ -17,7 +17,7 @@ max_dias_consecutivos = st.number_input('Ingrese el número máximo de días con
 archivo_subido_A = st.file_uploader("Subir archivo CSV de Matriz de Disponibilidad", type="csv")
 if archivo_subido_A is not None:
     A = pd.read_csv(archivo_subido_A)
-    st.write(A)  # Muestra la tabla de disponibilidad
+    st.write(A)  # Muestra la tabla de disponibilidad por persona 
 
 archivo_subido_R = st.file_uploader("Subir archivo CSV de Requisitos de Roles", type="csv")
 if archivo_subido_R is not None:
