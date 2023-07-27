@@ -1,3 +1,7 @@
+from pyomo.environ import ConcreteModel
+import pyomo.environ as pyo
+
+
 class ModeloPlanificacionBarcos:
     """
     Clase que implementa un modelo de planificación de barcos utilizando la biblioteca Pyomo.
