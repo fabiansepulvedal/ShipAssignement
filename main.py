@@ -10,11 +10,11 @@ st.title('Aplicación de Planificación de Barcos')
 # 1. Datos de entrada
 st.subheader('Datos de entrada')
 
-N = st.sidebar.number_input('Ingrese el número total de barcos', min_value=1)
-D = st.sidebar.number_input('Ingrese el número total de días en el período de planificación', min_value=1)
-T = st.sidebar.number_input('Ingrese el número de días consecutivos de trabajo en un barco', min_value=1)
-P = st.sidebar.number_input('Ingrese el número mínimo de días de descanso después de trabajar en un barco durante días consecutivos', min_value=1)
-max_dias_consecutivos = st.sidebar.number_input('Ingrese el número máximo de días consecutivos que una persona puede trabajar', min_value=1)
+N = st.number_input('Ingrese el número total de barcos', min_value=1)
+D = st.number_input('Ingrese el número total de días en el período de planificación', min_value=1)
+T = st.number_input('Ingrese el número de días consecutivos de trabajo en un barco', min_value=1)
+P = st.number_input('Ingrese el número mínimo de días de descanso después de trabajar en un barco durante días consecutivos', min_value=1)
+max_dias_consecutivos = st.number_input('Ingrese el número máximo de días consecutivos que una persona puede trabajar', min_value=1)
 
 # Initialize input data
 A, R, personas = None, None, None
