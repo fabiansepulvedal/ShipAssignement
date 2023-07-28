@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from ShipAssignment import ModeloPlanificacionBarcos
+from Modelo2 import ModeloPlanificacionBarcosBeta
 from pyomo.environ import ConcreteModel, Set, RangeSet, Var, Binary, Objective, minimize, Constraint, SolverFactory, TerminationCondition
 import pandas as pd 
 
@@ -42,6 +43,32 @@ if archivo_subido_personas is not None:
 if st.button('Ejecutar Modelo'):
     if A is not None and R is not None and personas is not None:
         modelo = ModeloPlanificacionBarcos(2, D, T, P, A, R, personas, max_dias_consecutivos)
+        modelo.solver()
+
+        # 3. Resultados
+        if modelo.resultados.solver.termination_condition == TerminationCondition.optimal:
+            df = modelo.resultados_dataframe_streamlit()
+
+            # Function to apply background color to non-zero cells
+            def highlight_non_zero(val):
+                if val != 0:
+                    return 'background-color: rgb(230, 255, 230)'  # Light pale green
+
+                return ''
+
+            # Apply the style to the dataframe
+            styled_df = df.style.applymap(highlight_non_zero)
+
+            # Display the styled dataframe
+            st.dataframe(styled_df)
+        else:
+            st.write("No se encontró una solución óptima.")
+    else:
+        st.write("Por favor, cargue todos los archivos requeridos.")
+
+if st.button('Ejecutar Modelo minimizar carga trabajo'):
+    if A is not None and R is not None and personas is not None:
+        modelo = ModeloPlanificacionBarcosBeta(2, D, T, P, A, R, personas, max_dias_consecutivos)
         modelo.solver()
 
         # 3. Resultados
