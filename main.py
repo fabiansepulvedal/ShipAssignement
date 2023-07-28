@@ -50,3 +50,15 @@ if st.button('Ejecutar Modelo'):
             st.write("No se encontró una solución óptima.")
     else:
         st.write("Por favor, cargue todos los archivos requeridos.")
+
+# 4. Show the uploaded elements as before (outside the 'Ejecutar Modelo' block)
+if archivo_subido_A is not None:
+    st.write(pd.DataFrame(A))  # Muestra la tabla de disponibilidad por persona
+
+if archivo_subido_R is not None:
+    st.write(pd.DataFrame(R))  # Muestra la tabla de requisitos de roles
+
+if archivo_subido_personas is not None:
+    personas_df = pd.read_csv(archivo_subido_personas)
+    personas = personas_df.set_index(personas_df.columns[0]).iloc[:, 0].to_dict()
+    st.write(personas_df)  # Muestra la tabla de asignaciones de roles
