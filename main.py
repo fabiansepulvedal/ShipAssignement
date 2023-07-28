@@ -44,7 +44,18 @@ if st.button('Ejecutar Modelo'):
         # 3. Resultados
         if modelo.resultados.solver.termination_condition == TerminationCondition.optimal:
             df = modelo.resultados_dataframe_streamlit()
-            st.dataframe(df)
+
+            # Function to apply background color to non-zero cells
+            def highlight_non_zero(val):
+                if val != 0:
+                    return 'background-color: palegreen'
+                return ''
+
+            # Apply the style to the dataframe
+            styled_df = df.style.applymap(highlight_non_zero)
+
+            # Display the styled dataframe
+            st.dataframe(styled_df)
         else:
             st.write("No se encontró una solución óptima.")
     else:
