@@ -10,7 +10,7 @@ st.title('Aplicación de Planificación de Barcos')
 # 1. Datos de entrada
 st.subheader('Datos de entrada')
 
-N = st.number_input('Ingrese el número total de barcos', min_value=1)
+#N = st.number_input('Ingrese el número total de barcos', min_value=1)
 D = st.number_input('Ingrese el número total de días en el período de planificación', min_value=1)
 T = st.number_input('Ingrese el número de días consecutivos de trabajo en un barco', min_value=1)
 P = st.number_input('Ingrese el número mínimo de días de descanso después de trabajar en un barco durante días consecutivos', min_value=1)
@@ -41,7 +41,7 @@ if archivo_subido_personas is not None:
 # 2. Ejecución
 if st.button('Ejecutar Modelo'):
     if A is not None and R is not None and personas is not None:
-        modelo = ModeloPlanificacionBarcos(N, D, T, P, A, R, personas, max_dias_consecutivos)
+        modelo = ModeloPlanificacionBarcos(2, D, T, P, A, R, personas, max_dias_consecutivos)
         modelo.solver()
 
         # 3. Resultados
