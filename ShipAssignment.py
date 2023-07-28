@@ -241,6 +241,32 @@ class ModeloPlanificacionBarcos:
         else:
             print("No se encontró una solución óptima.")
 
+    def resultados_dataframe_streamlit(self):
+        """
+        Returns the results of the planning as a pandas DataFrame.
+        """
+        if self.resultados.solver.termination_condition == TerminationCondition.optimal:
+            print("Valor Objetivo: ", self.modelo.OBJ())
+
+            # Collect data in a list of dictionaries
+            data = []
+            for j in self.modelo.J:
+                for i in self.modelo.I:
+                    fila = {"barcos": f"barco {j}", "persona": f"persona {i} (Rol: {self.personas[i]})"}
+                    for k in self.modelo.K:
+                        fila[f"día {k}"] = 1 if self.modelo.X[i, j, k].value >= 0.5 else 0
+                    data.append(fila)
+
+            # Create DataFrame
+            df = pd.DataFrame(data)
+            df = df.set_index(["barcos", "persona"])
+
+            return df
+        else:
+            print("No se encontró una solución óptima.")
+            return None
+
+
 # Crear el modelo con datos más complejos
 R = [{"cocinero": 2, "piloto": 2, "oficial": 1}, {"cocinero": 1, "piloto": 1, "oficial": 1}]
 A = [[1] * 14 for _ in range(30)]  # disponibilidad completa

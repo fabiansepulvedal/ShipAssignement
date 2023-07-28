@@ -41,7 +41,8 @@ if st.button('Ejecutar Modelo'):
 
         # 3. Resultados
         if modelo.resultados.solver.termination_condition == TerminationCondition.optimal:
-            modelo.imprimir_resultados()
+            df = modelo.resultados_dataframe_streamlit()
+            st.dataframe(df)
         else:
             st.write("No se encontró una solución óptima.")
     else:
