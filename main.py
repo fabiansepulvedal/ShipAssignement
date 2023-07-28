@@ -5,7 +5,7 @@ from pyomo.environ import ConcreteModel, Set, RangeSet, Var, Binary, Objective, 
 import pandas as pd 
 
 # 0. Título
-st.title('Aplicación de Planificación de Barcos')
+st.title(' Planificación de asignación navíos 🚢')
 
 # 1. Datos de entrada
 st.subheader('Datos de entrada')
