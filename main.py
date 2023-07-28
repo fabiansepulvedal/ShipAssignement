@@ -8,7 +8,7 @@ import pandas as pd
 st.title('Aplicación de Planificación de Barcos')
 
 # 1. Datos de entrada
-st.subheader('Datos de entrada')
+st.subheader('Parámetros iniciales')
 
 #N = st.number_input('Ingrese el número total de barcos', min_value=1)
 D = st.number_input('Ingrese el número total de días en el período de planificación', min_value=1)
