@@ -1,6 +1,6 @@
 from pyomo.environ import ConcreteModel
 import pyomo.environ as pyo
-from pyomo.environ import ConcreteModel, Set, RangeSet, Var, Binary, Objective, minimize, Constraint, SolverFactory, TerminationCondition
+from pyomo.environ import ConcreteModel, Set, RangeSet, Var, Binary, Objective, minimize, Constraint, SolverFactory, TerminationCondition, NonNegativeIntegers
 import pandas as pd 
 
 class ModeloPlanificacionBarcosBeta:
