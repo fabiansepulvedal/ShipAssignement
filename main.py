@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from ShipAssignment import ModeloPlanificacionBarcos
 from Modelo2 import ModeloPlanificacionBarcosBeta
-from pyomo.environ import ConcreteModel, Set, RangeSet, Var, Binary, Objective, minimize, Constraint, SolverFactory, TerminationCondition
+from pyomo.environ import ConcreteModel, Set, RangeSet, Var, Binary, Objective, minimize, Constraint, SolverFactory, TerminationCondition, NonNegativeIntegers
 import pandas as pd 
 
 # 0. Título
