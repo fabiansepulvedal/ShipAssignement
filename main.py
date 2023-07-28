@@ -23,13 +23,16 @@ archivo_subido_A = st.sidebar.file_uploader("Subir archivo CSV de Matriz de Disp
 if archivo_subido_A is not None:
     A = pd.read_csv(archivo_subido_A).values.tolist()
     st.subheader("Matriz de disponibilidad de personas por cada día")
-    edited_matrix = st.data_editor(A, num_rows="dynamic", use_container_width=True)
+    st.write(A)
+    
+    #edited_matrix = st.data_editor(A, num_rows="dynamic", use_container_width=True)
 
 archivo_subido_R = st.sidebar.file_uploader("Subir archivo CSV de Requisitos de Roles", type="csv")
 if archivo_subido_R is not None:
     R = pd.read_csv(archivo_subido_R).to_dict('records')
     st.subheader("Roles requeridos por cada barco")
-    edited_roles_personas = st.data_editor(R, num_rows="dynamic", use_container_width=True)
+    st.write(R)
+    #edited_roles_personas = st.data_editor(R, num_rows="dynamic", use_container_width=True)
 
 archivo_subido_personas = st.sidebar.file_uploader("Subir archivo CSV de Asignaciones de Roles", type="csv")
 if archivo_subido_personas is not None:
@@ -38,13 +41,14 @@ if archivo_subido_personas is not None:
 
     # Agregar titulo
     st.subheader("Cargo de cada persona")
-    edited_personas = st.data_editor(personas_df, num_rows="dynamic", use_container_width=True)
+    st.write(personas)
+    #edited_personas = st.data_editor(personas_df, num_rows="dynamic", use_container_width=True)
 
 
 # 2. Ejecución
 if st.button('Ejecutar Modelo'):
     if A is not None and R is not None and personas is not None:
-        modelo = ModeloPlanificacionBarcos(N, D, T, P, edited_matrix, edited_roles_personas, edited_personas, max_dias_consecutivos)
+        modelo = ModeloPlanificacionBarcos(N, D, T, P, A, R, personas, max_dias_consecutivos)
         modelo.solver()
 
         # 3. Resultados
