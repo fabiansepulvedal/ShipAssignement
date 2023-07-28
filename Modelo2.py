@@ -25,7 +25,7 @@ class ModeloPlanificacionBarcosBeta:
 
         m.X = Var(m.I, m.J, m.K, within=Binary)
         m.Y = Var(m.I, m.J, m.K, within=Binary)
-        m.Z = Var(within=NonNegativeIntegers)
+        m.Z = Var()
 
         def regla_objetivo(modelo):
             return modelo.Z
